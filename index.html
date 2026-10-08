@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morena Eventos Catering - Presupuestos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-brand">
+            <div class="logo-circle">
+                <img src="Logo de Morena Eventos Catering.png" alt="Logo Morena Eventos Catering">
+            </div>
+            <div class="brand-text">
+                <span class="brand-name">Morena Eventos Catering</span>
+                <span class="brand-sub">Presupuestos de Eventos</span>
+            </div>
+        </div>
+        <button id="menu-hamburguesa"><i class="fas fa-bars"></i></button>
+        <nav id="menu">
+            <a href="#clientes" class="active"><i class="fas fa-users"></i> Clientes</a>
+            <a href="#materiales"><i class="fas fa-utensils"></i> Insumos</a>
+            <a href="#mano-obra"><i class="fas fa-concierge-bell"></i> Servicios</a>
+            <a href="#presupuestos"><i class="fas fa-file-invoice-dollar"></i> Presupuestos</a>
+            <a href="#" id="exportar-datos"><i class="fas fa-download"></i> Exportar</a>
+            <a href="#" id="importar-datos"><i class="fas fa-upload"></i> Importar</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sección de Clientes -->
+        <section id="clientes" class="seccion-app">
+            <h2><i class="fas fa-users"></i> Gestión de Clientes</h2>
+            <p class="seccion-desc">Administre su cartera de clientes y empresas para eventos.</p>
+            <form id="form-cliente" class="form-app">
+                <div class="form-group">
+                    <input type="text" id="nombre-cliente" placeholder="Nombre completo / Empresa" required>
+                    <input type="tel" id="telefono-cliente" placeholder="Teléfono de contacto" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email-cliente" placeholder="Correo electrónico">
+                    <input type="text" id="direccion-cliente" placeholder="Dirección / Salón habitual">
+                </div>
+                <button type="submit" class="btn-primary"><i class="fas fa-user-plus"></i> Guardar Cliente</button>
+            </form>
+            <div class="filtro-busqueda">
+                <input type="text" id="buscar-cliente" placeholder="Filtrar clientes...">
+            </div>
+            <ul id="lista-clientes" class="lista-items"></ul>
+        </section>
+
+        <!-- Sección de Insumos -->
+        <section id="materiales" class="seccion-app" style="display: none;">
+            <h2><i class="fas fa-utensils"></i> Catálogo de Insumos</h2>
+            <p class="seccion-desc">Menús, bebidas, cristalería y todo lo necesario para el catering.</p>
+            <form id="form-material" class="form-app">
+                <div class="form-group">
+                    <input type="text" id="nombre-material" placeholder="Nombre del producto (ej: Menú Premium 3 Pasos)"
+                        required>
+                    <select id="unidad-material" required>
+                        <option value="">Unidad de medida</option>
+                        <option value="persona">Por Persona</option>
+                        <option value="unidad">Unidad</option>
+                        <option value="litro">Litro</option>
+                        <option value="kg">Kilogramo</option>
+                        <option value="global">Global</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="precio-material" placeholder="Precio Unitario ($)" step="0.01" required>
+                    <input type="number" id="stock-material" placeholder="Disponibilidad (opcional)">
+                </div>
+                <button type="submit" class="btn-primary"><i class="fas fa-plus"></i> Agregar Insumo</button>
+            </form>
+            <div class="filtro-busqueda">
+                <input type="text" id="buscar-material" placeholder="Buscar en el catálogo...">
+            </div>
+            <ul id="lista-materiales" class="lista-items"></ul>
+        </section>
+
+        <!-- Sección de Servicios -->
+        <section id="mano-obra" class="seccion-app" style="display: none;">
+            <h2><i class="fas fa-concierge-bell"></i> Servicios Profesionales</h2>
+            <p class="seccion-desc">DJ, personal de servicio, decoración, fotografía y adicionales.</p>
+            <form id="form-servicio" class="form-app">
+                <div class="form-group">
+                    <input type="text" id="nombre-servicio"
+                        placeholder="Descripción del servicio (ej: DJ & Iluminación)" required>
+                    <select id="unidad-servicio" required>
+                        <option value="">Forma de cobro</option>
+                        <option value="evento">Por Evento</option>
+                        <option value="hora">Por Hora</option>
+                        <option value="persona">Por Persona</option>
+                        <option value="global">Global</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="precio-servicio" placeholder="Precio ($)" step="0.01" required>
+                    <input type="number" id="tiempo-servicio" placeholder="Horas estimadas (opcional)" step="0.5">
+                </div>
+                <button type="submit" class="btn-primary"><i class="fas fa-concierge-bell"></i> Agregar
+                    Servicio</button>
+            </form>
+            <div class="filtro-busqueda">
+                <input type="text" id="buscar-servicio" placeholder="Buscar servicios...">
+            </div>
+            <ul id="lista-servicios" class="lista-items"></ul>
+        </section>
+
+        <!-- Sección de Presupuestos -->
+        <section id="presupuestos" class="seccion-app" style="display: none;">
+            <h2><i class="fas fa-file-invoice-dollar"></i> Generador de Presupuestos</h2>
+            <div class="form-app">
+                <div class="form-group">
+                    <select id="cliente-presupuesto" required>
+                        <option value="">Seleccionar Cliente</option>
+                    </select>
+                    <input type="text" id="nombre-presupuesto" placeholder="Nombre del Evento (ej: Boda Familia Perez)">
+                </div>
+                <div class="form-group">
+                    <input type="date" id="fecha-presupuesto" required>
+                    <input type="number" id="validez-presupuesto" placeholder="Validez (días)" min="1" value="15">
+                </div>
+
+                <div class="resumen-presupuesto">
+                    <h3><i class="fas fa-shopping-basket"></i> Ítems del Evento</h3>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <select id="material-presupuesto" style="flex: 1 1 100%;"></select>
+                        <input type="number" id="cantidad-material" placeholder="Cant." min="1">
+                        <input type="number" id="precio-unitario-material" placeholder="Precio unitario $" step="0.01">
+                        <button type="button" id="agregar-material" class="btn-secondary">Añadir</button>
+                    </div>
+                    <ul id="lista-materiales-presupuesto" class="lista-items" style="margin: 1rem 0;"></ul>
+
+                    <h3><i class="fas fa-concierge-bell"></i> Servicios Incluidos</h3>
+                    <div class="form-group" style="margin-top: 1rem;">
+                        <select id="servicio-presupuesto" style="flex: 1 1 100%;"></select>
+                        <input type="number" id="cantidad-servicio" placeholder="Cant." min="1">
+                        <input type="number" id="precio-unitario-servicio" placeholder="Precio unitario $" step="0.01">
+                        <button type="button" id="agregar-servicio" class="btn-secondary">Añadir</button>
+                    </div>
+                    <ul id="lista-servicios-presupuesto" class="lista-items" style="margin: 1rem 0;"></ul>
+
+                    <div class="resumen-fila">
+                        <span>Subtotal Insumos:</span>
+                        <span id="subtotal-materiales">$0</span>
+                    </div>
+                    <div class="resumen-fila">
+                        <span>Subtotal Servicios:</span>
+                        <span id="subtotal-servicios">$0</span>
+                    </div>
+                    <div class="resumen-fila total">
+                        <strong>TOTAL ESTIMADO:</strong>
+                        <strong id="total-presupuesto">$0</strong>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 1rem;">
+                    <textarea id="notas-presupuesto" placeholder="Notas adicionales / Observaciones..." rows="3"></textarea>
+                </div>
+
+                <div class="botones-accion">
+                    <button type="button" id="guardar-presupuesto" class="btn-primary"><i class="fas fa-save"></i>
+                        Guardar</button>
+                    <button type="button" id="imprimir-presupuesto" class="btn-secondary"><i class="fas fa-print"></i>
+                        Imprimir</button>
+                    <button type="button" id="descargar-pdf" class="btn-secondary" style="background-color: #dc3545; color: white;"><i class="fas fa-file-pdf"></i> PDF</button>
+                    <button type="button" id="enviar-whatsapp" class="btn-primary btn-whatsapp"><i
+                            class="fab fa-whatsapp"></i> WhatsApp</button>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <h3>Presupuestos Recientes</h3>
+                <div class="filtro-busqueda">
+                    <input type="text" id="buscar-presupuesto" placeholder="Buscar presupuesto...">
+                </div>
+                <ul id="lista-presupuestos" class="lista-items"></ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal-presupuesto" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <div class="modal-acciones" style="margin-bottom: 1rem; display: flex; gap: 10px;">
+                <button id="modal-btn-imprimir" class="btn-secondary"><i class="fas fa-print"></i> Imprimir</button>
+                <button id="modal-btn-pdf" class="btn-secondary" style="background-color: #dc3545; color: white;"><i class="fas fa-file-pdf"></i> PDF</button>
+                <button id="modal-btn-whatsapp" class="btn-primary btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+            </div>
+            <div id="contenido-modal"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="logo.js"></script>
+    <script src="app.min.js?v=1"></script>
+</body>
+
+</html>
